@@ -109,9 +109,8 @@ const EditForm = () => {
         <label className="input input-bordered flex items-center gap-2 w-full">
           Image:
           <input
-            value={form.image}
             onChange={handleChange}
-            type="text"
+            type="file"
             name="image"
             className="grow"
           />
