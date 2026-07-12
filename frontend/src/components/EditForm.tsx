@@ -6,7 +6,12 @@ import Preview from './Preview.tsx';
 const EditForm = () => {
   const [imagePreview, setImagePreview] = useState('');
   const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    firstName: string;
+    lastName: string;
+    email: string;
+    image: string | File;
+  }>({
     firstName: '',
     lastName: '',
     email: '',
@@ -38,10 +43,14 @@ const EditForm = () => {
   }, []);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.name === 'image') {
-      setImagePreview(e.target.value);
+    if (e.target.name === 'image' && e.target.files) {
+      setImagePreview(URL.createObjectURL(e.target.files[0]));
     }
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
+    setForm(prev => ({
+      ...prev,
+      [e.target.name]: e.target.type === 'file' ? e.target.files?.[0] : e.target.value
+    }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
