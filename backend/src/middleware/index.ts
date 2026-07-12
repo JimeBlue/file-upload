@@ -1,3 +1,4 @@
+export { default as cloudUploader } from './cloudUploader.ts';
 export { default as errorHandler } from './errorHandler.ts';
 export { default as formMiddleware } from './formMiddleware.ts';
 export { default as notFoundHandler } from './notFoundHandler.ts';
