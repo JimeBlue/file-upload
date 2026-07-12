@@ -58,9 +58,11 @@ const EditForm = () => {
     try {
       setLoading(true);
 
+      const formData = new FormData(e.currentTarget);
+
       const { firstName, lastName, email, image } = await updateUser({
         id: '6a50cd52d0eaa75529da62ba',
-        formData: form
+        formData
       });
 
       setImagePreview(image);
