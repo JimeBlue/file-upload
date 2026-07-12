@@ -1,8 +1,9 @@
+import type { File } from 'formidable';
+
 declare global {
   namespace Express {
     export interface Request {
-      // TODO: narrow this to formidable's File type once cloudUploader is built
-      file?: unknown;
+      file?: File;
     }
   }
 }
